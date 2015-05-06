@@ -1,37 +1,36 @@
 import Items, Enemies, Actions, World
 
-class MapTile:
+class MapTile(object):
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
 
 	def intro_text(self):
-		raise NotImplementedError()
+		print("This is the Craberries dungeon!")
 
 	def modify_Player(self, the_Player):
-		print("FIFI is here")
+		print("FIFI tries to modify the player!")
 		
 	def adjacent_moves(self):
 		moves = []
-		if world.tile_exists(self.x + 1, self.y):
+		if World.tile_exists(self.x + 1, self.y):
 			moves.append(Actions.MoveEast())
-		if world.tile_exists(self.x - 1, self.y):
+		if World.tile_exists(self.x - 1, self.y):
 			moves.append(Actions.MoveWest())
-		if world.tiles_exist(self.x, self.y + 1):
+		if World.tile_exists(self.x, self.y + 1):
 			moves.append(Actions.MoveNorth())
-		if world.tiles_exists(self.x, self.y - 1):
+		if World.tile_exists(self.x, self.y - 1):
 			moves.append(Actions.MoveSouth())
 
 		return moves
 
 	def available_Actions(self):
-		moves = self.adjecent_moves()
+		moves = self.adjacent_moves()
 		moves.append(Actions.ViewInventory())
 
 		return moves
 
 class StartingRoom(MapTile):
-	"""Start here FIFI you suck!"""
 	def intro_text(self):
 		return"""
 		You find yourself in a long dank hallway. 
@@ -44,7 +43,7 @@ class LootRoom(MapTile):
 	"""Put loot here"""
 	def __init__(self, x, y, Items):
 		self.Items = Items
-		super().__init__(x, y)
+		super(LootRoom, self).__init__(x, y)
 
 	def add_loot(self, the_Player):
 		the_Player.inventory.append(self.Items)

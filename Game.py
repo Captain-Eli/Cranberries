@@ -1,10 +1,5 @@
-
-
-
-
 import World
 from Player import Player
-
 
 def play():
 	World.load_tiles()
@@ -14,7 +9,7 @@ def play():
 		room.modify_Player(player)
 		if player.is_alive() and not player.victory:
 			print	("What will you do?:\n")
-			available_actions = room.available_actions()
+			available_actions = room.available_Actions()
 			for action in available_actions:
 				print	(action)
 			Action_input = input('Action: ')

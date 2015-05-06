@@ -4,7 +4,7 @@ import Items, World
 class Player:
 	inventory = [Items.Gold(15), Items.Rock()]
 	hp=100
-	location_x, location_y = (0, 0)
+	location_x, location_y = (0, 0xf)
 	victory = False
 
 	def is_alive(self):
