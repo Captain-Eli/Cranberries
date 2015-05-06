@@ -1,0 +1,16 @@
+StartingRoom
+CastleExit
+StupidAnimalRoom
+EmptyCastleRoom
+FindWoodenSwordRoom
+FindGoldRoom69
+SpookySkeletonRoom
+SpookySkeletonRoom
+FindWoodenStaffRoom
+FindWoodenBowRoom
+MoistSlimeRoom
+FindGoldRoom1
+MoistSlimeRoom
+FindWoodenAxeRoom
+FindGoldRoom5
+MoistSlimeRoom

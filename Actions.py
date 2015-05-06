@@ -1,5 +1,5 @@
 # Cranberries
-Senior Project for Eli and Henry
+# Senior Project for Eli and Henry
 from Player import Player
 
 class Action():
