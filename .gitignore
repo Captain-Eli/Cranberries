@@ -6,3 +6,5 @@
 #Player.py#
 
 #World.py#
+__pycache__/Actions.cpython-35.pyc
+*.pyc
