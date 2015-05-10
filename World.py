@@ -8,8 +8,8 @@ def tile_exists(x, y):
 def load_tiles():
 	_world[(0, 0)] = Tiles.StartingRoom(0, 0)
 	_world[(1, 0)] = Tiles.MoistSlimeRoom(1, 0)
-	_world[(2, 0)] = Tiles.StartingRoom(2, 0)
-	_world[(3, 0)] = Tiles.StartingRoom(3, 0)
+	_world[(2, 0)] = Tiles.StupidAnimalRoom(2, 0)
+	_world[(3, 0)] = Tiles.SpookySkeletonRoom(3, 0)
 	_world[(4, 0)] = Tiles.StartingRoom(4, 0)
 	_world[(5, 0)] = Tiles.StartingRoom(5, 0)
 

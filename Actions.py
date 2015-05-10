@@ -2,6 +2,7 @@
 # Senior Project for Eli and Henry
 from Player import Player
 
+from Enemies import Enemy
 class Action(object):
 	def __init__(self, method, name, hotkey, **kwargs):
 		self.method = method
@@ -32,7 +33,7 @@ class ViewInventory(Action):
 
 class Attack(Action):
 	def __init__(self, enemy):
-		super(Attack, self).__init__(method=Player.attack, name="Attack", hotkey='e', enemy=enemy)
+		super(Attack, self).__init__(method=Player.attack, name="Attack", hotkey='e', Enemy=Enemy)
 
 class Flee(Action):
 	def __init__(self, Tile):

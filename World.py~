@@ -1,0 +1,59 @@
+import Tiles
+
+_world = {}
+
+def tile_exists(x, y):
+	return _world.get((x, y))
+
+def load_tiles():
+	_world[(0, 0)] = Tiles.StartingRoom(0, 0)
+	_world[(1, 0)] = Tiles.MoistSlimeRoom(1, 0)
+	_world[(2, 0)] = Tiles.StupidAnimalRoom(2, 0)
+	_world[(3, 0)] = Tiles.StartingRoom(3, 0)
+	_world[(4, 0)] = Tiles.StartingRoom(4, 0)
+	_world[(5, 0)] = Tiles.StartingRoom(5, 0)
+
+	_world[(0, 1)] = Tiles.StartingRoom(0, 1)
+	_world[(1, 1)] = Tiles.StartingRoom(1, 1)
+	_world[(2, 1)] = Tiles.StartingRoom(2, 1)
+	_world[(3, 1)] = Tiles.StartingRoom(3, 1)
+	_world[(4, 1)] = Tiles.StartingRoom(4, 1)
+	_world[(5, 1)] = Tiles.StartingRoom(5, 1)
+
+	_world[(0, 2)] = Tiles.StartingRoom(0, 2)
+	_world[(1, 2)] = Tiles.StartingRoom(1, 2)
+	_world[(2, 2)] = Tiles.StartingRoom(2, 2)
+	_world[(3, 2)] = Tiles.StartingRoom(3, 2)
+	_world[(4, 2)] = Tiles.StartingRoom(4, 2)
+	_world[(5, 2)] = Tiles.StartingRoom(5, 2)
+
+	_world[(0, 3)] = Tiles.StartingRoom(0, 3)
+	_world[(1, 3)] = Tiles.StartingRoom(1, 3)
+	_world[(2, 3)] = Tiles.StartingRoom(2, 3)
+	_world[(3, 3)] = Tiles.StartingRoom(3, 3)
+	_world[(4, 3)] = Tiles.StartingRoom(4, 3)
+	_world[(5, 3)] = Tiles.StartingRoom(5, 3)
+
+	_world[(0, 4)] = Tiles.StartingRoom(0, 4)
+	_world[(1, 4)] = Tiles.StartingRoom(1, 4)
+	_world[(2, 4)] = Tiles.StartingRoom(2, 4)
+	_world[(3, 4)] = Tiles.StartingRoom(3, 4)
+	_world[(4, 4)] = Tiles.StartingRoom(4, 4)
+	_world[(5, 4)] = Tiles.StartingRoom(5, 4)
+
+	_world[(0, 5)] = Tiles.StartingRoom(0, 5)
+	_world[(1, 5)] = Tiles.StartingRoom(1, 5)
+	_world[(2, 5)] = Tiles.StartingRoom(2, 5)
+	_world[(3, 5)] = Tiles.StartingRoom(3, 5)
+	_world[(4, 5)] = Tiles.StartingRoom(4, 5)
+	_world[(5, 5)] = Tiles.StartingRoom(5, 5)
+
+#	with open('resources/map.txt','r') as fa:
+#		rows = f.readlines()
+#		x_max = len(rows[0].split('\t'))
+#		for y in range(len(rows)):
+#			cols = rows[y].split('\t')
+#
+#		for x in range(x_max):
+#			Tile_name = cols[x].replace('\n','')
+#			_world[(x, y)] = None if Tile_name == ''else getattr(__import__('Tiles'), Tile_name)(x, y)

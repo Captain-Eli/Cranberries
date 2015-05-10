@@ -39,12 +39,12 @@ class Player:
 #attack command
 	def attack(self, enemy):
 		best_weapon = None
-		max_dmg = 0
-		for Item in self.inventory:
-			if isinstance(Item, Items.Weapon):
-				if Item.damage > max_dmg:
-						max_dmg = Item.damage
-						best_weapon = Item
+		max_dmg = 0	
+		for i in self.inventory:
+			if isinstance(i, Items.Weapon):
+				if i.damage > max_dmg:
+						max_dmg = i.damage
+						best_weapon = i
 
 		print("You use {} against {}!".format(best_weapon.name, enemy.name))
 		enemy.hp -= best_weapon.damage
