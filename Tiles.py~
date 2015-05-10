@@ -26,8 +26,9 @@ class MapTile(object):
 
 	def available_Actions(self):
 		moves = self.adjacent_moves()
-		moves.append(Actions.Attack(moves, self))
+		moves.append(Actions.Attack(moves))
 		moves.append(Actions.ViewInventory())
+		moves.append(Actions.Flee(moves))
 		return moves
 
 class StartingRoom(MapTile):
@@ -99,9 +100,6 @@ class SpookySkeletonRoom(EnemyRoom):
 			"""
 class MoistSlimeRoom(EnemyRoom):
 	"""Wet and Nasty"""
-	def __init__(self, x, y):
-		super(MoistSlimeRoom, self).__init__(x, y, Enemies.MoistSlime())
-
 	def intro_text(self):
 		if self.enemy.is_alive():
 			return"""
@@ -111,6 +109,8 @@ class MoistSlimeRoom(EnemyRoom):
 			return"""
 			The Moist Slime's Moist corpse is on the ground Moistly... Moist
 			"""
+	def __init__(self, x, y):
+		super(MoistSlimeRoom, self).__init__(x, y, Enemies.MoistSlime())
 
 # item rooms
 
