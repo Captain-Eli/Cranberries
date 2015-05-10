@@ -1,4 +1,4 @@
-import Items, Enemies, Actions, World
+import Items, Enemies, Actions, World, Player
 
 class MapTile(object):
 	def __init__(self, x, y):
@@ -26,7 +26,7 @@ class MapTile(object):
 
 	def available_Actions(self):
 		moves = self.adjacent_moves()
-
+		moves.append(Actions.Attack(moves))
 		moves.append(Actions.ViewInventory())
 		return moves
 
