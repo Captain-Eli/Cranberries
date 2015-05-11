@@ -1,4 +1,4 @@
-import Items, Enemies, Actions, World, Player
+import Items, Enemies, Actions, World, Player, Tiles
 
 class MapTile(object):
 	def __init__(self, x, y):
@@ -26,9 +26,7 @@ class MapTile(object):
 
 	def available_Actions(self):
 		moves = self.adjacent_moves()
-		moves.append(Actions.Attack(moves))
 		moves.append(Actions.ViewInventory())
-		moves.append(Actions.Flee(moves))
 		return moves
 
 class StartingRoom(MapTile):
@@ -112,6 +110,14 @@ class MoistSlimeRoom(EnemyRoom):
 			return"""
 			The Moist Slime's Moist corpse is on the ground Moistly... Moist
 			"""
+	def available_Actions(self):
+                moves = EnemyRoom.available_Actions(self)
+		moves.append(Actions.Attack(Enemies.MoistSlime))
+		# This next line should look up the last tile the player occupied.
+		# Use the start tile as a placeholder for now
+		moves.append(Actions.Flee(Tiles.StartingRoom))
+		return moves
+
 
 # item rooms
 

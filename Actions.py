@@ -9,6 +9,10 @@ class Action(object):
 		self.hotkey = hotkey
 		self.name = name
 		self.kwargs = kwargs
+		print("method:", method)
+		print("hotkey:", hotkey)
+		print("name:", name)
+		print("kwargs:", kwargs)
 
 	def __str__(self):
 		return "{}: {}".format(self.hotkey, self.name)
@@ -29,11 +33,11 @@ class MoveWest(Action):
 class ViewInventory(Action):
 	"""Print the player's inventory"""
 	def __init__(self):
-		super(ViewInventory, self).__init__(method=Player.print_inventory, name='Veiw inventory', hotkey='i')
+		super(ViewInventory, self).__init__(method=Player.print_inventory, name='View inventory', hotkey='i')
 
 class Attack(Action):
-	def __init__(self, enemy):
-		super(Attack, self).__init__(method=Player.attack, name="Attack", hotkey='e', Enemy=Enemy)
+	def __init__(self, enemyToAttack):
+		super(Attack, self).__init__(method=Player.attack, name="Attack", hotkey='e', enemy=enemyToAttack)
 
 class Flee(Action):
 	def __init__(self, Tile):

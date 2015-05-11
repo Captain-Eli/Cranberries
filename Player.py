@@ -13,6 +13,7 @@ class Player:
 	def do_action(self, action, **kwargs):
 		action_method = getattr(self, action.method.__name__)
 		if action_method:
+                        print("FIFI got an action!!")
 			action_method(**kwargs)
 
 
@@ -38,6 +39,7 @@ class Player:
 
 #attack command
 	def attack(self, enemy):
+                print("FIFI is attacking")
 		best_weapon = None
 		max_dmg = 0
 		for Item in self.inventory:
