@@ -55,11 +55,11 @@ class EnemyRoom(MapTile):
 	"""Lion lives here"""
 	def __init__(self, x, y, Enemy):
 		self.Enemy = Enemy
-		super().__init__(x, y)
+		super(EnemyRoom, self).__init__(x, y)
 
 	def modify_Player(self, the_Player):
 		if self.Enemy.is_alive():
-			the_Player.hp= th_Player.hp - self.Enemy.damage
+			the_Player.hp= the_Player.hp - self.Enemy.damage
 			print("Enemy does {} damage. You have {} Hit Point.".format(self.Enemy.damage, the_Player.hp))
 
 class EmptyCastleRoom(MapTile):
@@ -73,7 +73,7 @@ class EmptyCastleRoom(MapTile):
 class StupidAnimalRoom(EnemyRoom):
 	"""Stupid humans live here"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Enemies.StupidAnimal())
+		super(StupidAnimalRoom, self).__init__(x, y, Enemies.StupidAnimal())
 
 	def intro_text(self):
 		if self.enemy.is_alive():
@@ -87,7 +87,7 @@ class StupidAnimalRoom(EnemyRoom):
 class SpookySkeletonRoom(EnemyRoom):
 	"""Did you know dragons are better than undead?"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Enemies.SpookySkeleton())
+		super(SpookySkeletonRoom, self).__init__(x, y, Enemies.SpookySkeleton())
 	def intro_init(self):
 		if self.enemy.is_alive():
 			return"""
@@ -100,7 +100,7 @@ class SpookySkeletonRoom(EnemyRoom):
 class MoistSlimeRoom(EnemyRoom):
 	"""Wet and Nasty"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Enemies.MoistSlime())
+		super(MoistSlimeRoom, self).__init__(x, y, Enemies.MoistSlime())
 
 	def intro_text(self):
 		if self.enemy.is_alive():
