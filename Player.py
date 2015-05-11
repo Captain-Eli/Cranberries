@@ -11,7 +11,7 @@ class Player:
 		return self.hp > 0
 
 	def do_action(self, action, **kwargs):
-		actions_method + getattr(self, action.method.__name__)
+		action_method = getattr(self, action.method.__name__)
 		if action_method:
 			action_method(**kwargs)
 
