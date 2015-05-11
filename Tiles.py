@@ -77,7 +77,7 @@ class StupidAnimalRoom(EnemyRoom):
 		super(StupidAnimalRoom, self).__init__(x, y, Enemies.StupidAnimal())
 
 	def intro_text(self):
-		if self.enemy.is_alive():
+		if self.Enemy.is_alive():
 			return"""
 			you enter the room and are soon tackled by a stupid animal.
 			"""
@@ -90,7 +90,7 @@ class SpookySkeletonRoom(EnemyRoom):
 	def __init__(self, x, y):
 		super(SpookySkeletonRoom, self).__init__(x, y, Enemies.SpookySkeleton())
 	def intro_init(self):
-		if self.enemy.is_alive():
+		if self.Enemy.is_alive():
 			return"""
 			You are startled by the apperance of a Spooky Skeleton
 			"""
@@ -104,7 +104,7 @@ class MoistSlimeRoom(EnemyRoom):
 		super(MoistSlimeRoom, self).__init__(x, y, Enemies.MoistSlime())
 
 	def intro_text(self):
-		if self.enemy.is_alive():
+		if self.Enemy.is_alive():
 			return"""
 			This room is moist... too wet. A Moist Slime Appears!
 			"""
