@@ -132,7 +132,7 @@ class FindWoodenStaffRoom(LootRoom):
 class FindIronStaffRoom(LootRoom):
 	"""Nice stick goes here"""
 	def __init__(self, x, y):
-		super().__init__(x, y, 	Items.IronStaff())
+		super(FindIronStaffRoom, self).__init__(x, y, 	Items.IronStaff())
 
 	def intro_text(self):
 		return"""
