@@ -1,5 +1,5 @@
 import random
-import Items, World
+import Items, World, Enemies
 
 class Player:
 	inventory = [Items.Gold(15), Items.Rock()]
@@ -13,13 +13,13 @@ class Player:
 	def do_action(self, action, **kwargs):
 		action_method = getattr(self, action.method.__name__)
 		if action_method:
-                        print("FIFI got an action!!")
 			action_method(**kwargs)
 
 
 	def print_inventory(self):
 		for Item in self.inventory:
 			print(Item, '\n')
+			
 	def move(self, dx, dy):
 		self.location_x += dx
 		self.location_y += dy
@@ -39,7 +39,6 @@ class Player:
 
 #attack command
 	def attack(self, enemy):
-                print("FIFI is attacking")
 		best_weapon = None
 		max_dmg = 0
 		for Item in self.inventory:
@@ -48,12 +47,12 @@ class Player:
 						max_dmg = Item.damage
 						best_weapon = Item
 
-		print("You use {} against {}!".format(best_weapon.name, enemy.name))
+		print("You use {} against {}!", format(best_weapon.name, enemy.name))
 		enemy.hp -= best_weapon.damage
 		if not enemy.is_alive():
-			print("{} has been slain!".format(enemy.name))
+			print("{} has been slain!", format(enemy.name))
 		else:
-			print("{} HP is {}.".format(enemy.name, enemy.hp))
+			print("{} HP is {}.", format(enemy.name, enemy.hp))
 
 	def flee(self, tile):		
 		available_moves = tile.adjacent_move()

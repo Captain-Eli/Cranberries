@@ -9,10 +9,6 @@ class Action(object):
 		self.hotkey = hotkey
 		self.name = name
 		self.kwargs = kwargs
-		print("method:", method)
-		print("hotkey:", hotkey)
-		print("name:", name)
-		print("kwargs:", kwargs)
 
 	def __str__(self):
 		return "{}: {}".format(self.hotkey, self.name)

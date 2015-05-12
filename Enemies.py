@@ -3,6 +3,7 @@ class Enemy(object):
 		self.name = name
 		self.hp = hp
 		self.damage = damage
+		
 	def is_alive(self):
 		return self.hp > 0
 
@@ -12,7 +13,7 @@ class SpookySkeleton(Enemy):
 
 class LackyJoblin(Enemy):
 	def __init__(self):
-		super(LackyJoblin, self).__init__(name="Lacky Skeleton", hp=15, damage=2)
+		super(LackyJoblin, self).__init__(name="Lacky Joblin", hp=15, damage=2)
 
 class StupidAnimal(Enemy):
 	def __init__(self):
