@@ -60,7 +60,7 @@ class SteelStaff(Weapon):
 			damage=12)
 class UnobtainiumStaff(Weapon):
 	def __init__(self):
-		super(UnobtaniumStaff, self).__init__(name="Unobtainium Staff",
+		super(UnobtainiumStaff, self).__init__(name="Unobtainium Staff",
 			description="The Staff is just inconceviable.",
 			value=99999999,
 			damage=18)

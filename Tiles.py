@@ -8,7 +8,7 @@ class MapTile(object):
 	def intro_text(self):
 		print("This is the Craberries dungeon!")
 
-	def modify_Player(self, the_Player):
+	def modify_Player(self, Player):
 		print("FIFI tries to modify the player!")
 		
 	def adjacent_moves(self):
@@ -35,7 +35,7 @@ class StartingRoom(MapTile):
 		You find yourself in a long dank hallway. 
 		You are compelled to move foward.
 		"""
-	def modify_Player(self, the_Player):
+	def modify_Player(self, Player):
 		pass
 
 class LootRoom(MapTile):
@@ -44,10 +44,10 @@ class LootRoom(MapTile):
 		self.Items = Items
 		super(LootRoom, self).__init__(x, y)
 
-	def add_loot(self, the_Player):
-		the_Player.inventory.append(self.Items)
+	def add_loot(self, Player):
+		Player.inventory.append(self.Items)
 		
-	def modify_Player(self, the_Player):
+	def modify_Player(self, Player):
 		self.add_loot(Player)
 
 class EnemyRoom(MapTile):
@@ -83,6 +83,13 @@ class StupidAnimalRoom(EnemyRoom):
 			return"""
 			The stupid animal stupidly lies dead on the ground because its stupid
 			"""
+	def available_Actions(self):
+                moves = EnemyRoom.available_Actions(self)
+		moves.append(Actions.Attack(Enemies.MoistSlime))
+		# This next line should look up the last tile the player occupied.
+		# Use the start tile as a placeholder for now
+		moves.append(Actions.Flee(Tiles.StartingRoom))
+		return moves
 class SpookySkeletonRoom(EnemyRoom):
 	"""Did you know dragons are better than undead?"""
 	def __init__(self, x, y):
@@ -96,6 +103,13 @@ class SpookySkeletonRoom(EnemyRoom):
 			return"""
 			The skeleton lies in peices it is far less spooky now
 			"""
+	def available_Actions(self):
+                moves = EnemyRoom.available_Actions(self)
+		moves.append(Actions.Attack(Enemies.MoistSlime))
+		# This next line should look up the last tile the player occupied.
+		# Use the start tile as a placeholder for now
+		moves.append(Actions.Flee(Tiles.StartingRoom))
+		return moves
 class MoistSlimeRoom(EnemyRoom):
 	"""Wet and Nasty"""
 	def __init__(self, x, y):
@@ -123,7 +137,7 @@ class MoistSlimeRoom(EnemyRoom):
 
 class FindWoodenStaffRoom(LootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.WoodenStaff())
+		super(FindWoodenStaffRoom, self).__init__(x, y, Items.WoodenStaff())
 
 	def intro_text(self):
 		return"""
@@ -141,7 +155,7 @@ class FindIronStaffRoom(LootRoom):
 class FindSteelStaffRoom(LootRoom):
 	"""Learning how of annel iron is good, eh?"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.SteelStaff())
+		super(FindSteelStaffRoom, self).__init__(x, y, Items.SteelStaff())
 
 	def intro_text(self):
 		return"""
@@ -150,7 +164,7 @@ class FindSteelStaffRoom(LootRoom):
 class FindUnobtainiumStaffRoom(LootRoom):
 	"""Ok Logan, your staff is ready."""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.Staff())
+		super(FindUnobtainiumStaffRoom, self).__init__(x, y, Items.UnobtainiumStaff())
 
 	def intro_text(self):
 		return"""
@@ -159,7 +173,7 @@ class FindUnobtainiumStaffRoom(LootRoom):
 class FindWoodenSwordRoom(LootRoom):
 	"""For the Anime fan"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.WoodenSword())
+		super(FindWoodenSwordRoom, self).__init__(x, y, Items.WoodenSword())
 
 	def intro_text(self):
 		return"""
@@ -168,7 +182,7 @@ class FindWoodenSwordRoom(LootRoom):
 class FindIronSwordRoom(LootRoom):
 	"""Not a light saber"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.IronSword())
+		super(FindIronSwordRoom, self).__init__(x, y, Items.IronSword())
 
 	def intro_text(self):
 		return"""
@@ -177,7 +191,7 @@ class FindIronSwordRoom(LootRoom):
 class FindSteelSwordRoom(LootRoom):
 	"""Also not a light saber"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.SteelSword())
+		super(FindSteelRoom, self).__init__(x, y, Items.SteelSword())
 
 	def intro_text(self):
 		return"""
@@ -186,7 +200,7 @@ class FindSteelSwordRoom(LootRoom):
 class FindValerianSteelSwordRoom(LootRoom):
 	"""Stick it to you!"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.ValerianSteelSword())
+		super(FindValerianSteelSwordRoom, self).__init__(x, y, Items.ValerianSteelSword())
 
 	def intro_text(self):
 		return"""
@@ -195,7 +209,7 @@ class FindValerianSteelSwordRoom(LootRoom):
 class FindWoodenAxeRoom(LootRoom):
 	"""I have an Axe, Axe, Axe, Axe!"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.WoodenAxe())
+		super(FindWoodenAxeRoom, self).__init__(x, y, Items.WoodenAxe())
 
 	def intro_text(self):
 		return"""
@@ -204,7 +218,7 @@ class FindWoodenAxeRoom(LootRoom):
 class FindIronAxeRoom(LootRoom):
 	"""I like sticking it into your head!"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.IronAxe())
+		super(FindIronAxeRoom, self).__init__(x, y, Items.IronAxe())
 
 	def intro_text(self):
 		return"""
@@ -213,7 +227,7 @@ class FindIronAxeRoom(LootRoom):
 class FindSteelAxeRoom(LootRoom):
 	"""I steal axes!"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.SteelAxe())
+		super(FindSteelAxeRoom, self).__init__(x, y, Items.SteelAxe())
 
 	def intro_text(self):
 		return"""
@@ -222,7 +236,7 @@ class FindSteelAxeRoom(LootRoom):
 class FindMythrilAxeRoom(LootRoom):
 	"""This one smells like butt"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.MythrilAxe())
+		super(FindMythrilAxeRoom, self).__init__(x, y, Items.MythrilAxe())
 
 	def intro_text(self):
 		return"""
@@ -230,7 +244,7 @@ class FindMythrilAxeRoom(LootRoom):
 		"""
 class FindWoodenBowRoom(LootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.WoodenBow())
+		super(FindWoodenBowRoom, self).__init__(x, y, Items.WoodenBow())
 
 	def intro_text(self):
 		return"""
@@ -239,7 +253,7 @@ class FindWoodenBowRoom(LootRoom):
 class FindIronBowRoom(LootRoom):
 	"""Hi there iron bow"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.IronBow())
+		super(FindIronBowRoom, self).__init__(x, y, Items.IronBow())
 
 	def intro_text(self):
 		return"""
@@ -248,7 +262,7 @@ class FindIronBowRoom(LootRoom):
 class FindSteelBowRoom(LootRoom):
 	"""Hi there steel bow"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.SteelBow())
+		super(FindSteelBow, self).__init__(x, y, Items.SteelBow())
 
 	def intro_text(self):
 		return"""
@@ -257,7 +271,7 @@ class FindSteelBowRoom(LootRoom):
 class FindBowOfLightBowRoom(LootRoom):
 	"""Hi there light bow"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.BowOfLightBow())
+		super(FindBowOfLightBowRoom, self).__init__(x, y, Items.BowOfLightBow())
 
 	def intro_text(self):
 		return"""
@@ -288,7 +302,7 @@ class FindGoldRoom5(LootRoom):
 class FindGoldRoom69(LootRoom):
 	"""An obscene amount of gold"""
 	def __init__(self, x, y):
-		super().__init__(x, y, Items.Gold(69))
+		super(FindGoldRoom69, self).__init__(x, y, Items.Gold(69))
 
 		def intro_text(self):
 			return"""
