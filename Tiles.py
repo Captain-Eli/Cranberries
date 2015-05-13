@@ -86,7 +86,7 @@ class StupidAnimalRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemy.StupidAnimal))
+		moves.append(Actions.Attack(Enemy.StupidAnimal()))
 		# This next line should look up the last tile the player occupied.
 		# Use the start tile as a placeholder for now
 		moves.append(Actions.Flee(Tiles.StartingRoom))

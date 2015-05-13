@@ -42,14 +42,13 @@ class Player:
 	def attack(self, enemy):
 		best_weapon = None
 		max_dmg = 0
-		print enemy
 		for Item in self.inventory:
 			if isinstance(Item, Items.Weapon):
 				if Item.damage > max_dmg:
 						max_dmg = Item.damage
 						best_weapon = Item
 
-		print("You use {} against {}!", format(best_weapon.name, enemy.name))
+		print("You use {0} against {1}!".format(best_weapon.name, enemy.name))
 		enemy.hp -= best_weapon.damage
 		if not enemy.is_alive():
 			print("{} has been slain!", format(enemy.name))
