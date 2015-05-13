@@ -48,12 +48,12 @@ class Player:
 						max_dmg = Item.damage
 						best_weapon = Item
 
-		print("You use {0} against {1}!".format(best_weapon.name, enemy.name))
+		print("You use a {0} against the {1}!".format(best_weapon.name, enemy.name))
 		enemy.hp -= best_weapon.damage
 		if not enemy.is_alive():
-			print("{} has been slain!", format(enemy.name))
+			print("The {0} has been slain!".format(enemy.name))
 		else:
-			print("{} HP is {}.", format(enemy.name, enemy.hp))
+			print("{0} HP is {1}.".format(enemy.name, enemy.hp))
 
 	def flee(self, tile):		
 		available_moves = tile.adjacent_move()

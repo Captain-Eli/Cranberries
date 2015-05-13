@@ -9,16 +9,16 @@ class Enemy(object):
 
 class SpookySkeleton(Enemy):
 	def __init__(self):
-		super(SpookySkeleton, self).__init__(name="Enemy.SpookySkeleton", hp=15, damage=3)
+		super(SpookySkeleton, self).__init__(name="Spooky Skeleton", hp=15, damage=3)
 
 class LackyJoblin(Enemy):
 	def __init__(self):
-		super(LackyJoblin, self).__init__(name="Enemy.LackyJoblin", hp=15, damage=2)
+		super(LackyJoblin, self).__init__(name="Lacky Joblin", hp=15, damage=2)
 
 class StupidAnimal(Enemy):
 	def __init__(self):
-		super(StupidAnimal, self).__init__(name="Enemy.StupidAnimal", hp=5, damage=1)
+		super(StupidAnimal, self).__init__(name="Stupid Animal", hp=5, damage=1)
 
 class MoistSlime(Enemy):
 	def __init__(self):
-		super(MoistSlime, self).__init__(name="Enemy.MoistSlime", hp=10, damage=1)
+		super(MoistSlime, self).__init__(name="Moist Slime", hp=10, damage=1)

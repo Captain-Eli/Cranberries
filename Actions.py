@@ -2,7 +2,6 @@
 # Senior Project for Eli and Henry
 from Player import Player
 import Enemy
-from Enemy import StupidAnimal
 
 class Action(object):
 	def __init__(self, method, name, hotkey, **kwargs):
