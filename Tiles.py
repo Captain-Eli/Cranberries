@@ -10,7 +10,7 @@ class MapTile(object):
 		print("This is the Craberries dungeon!")
 
 	def modify_Player(self, Player):
-		print("FIFI tries to modify the player!")
+		pass
 		
 	def adjacent_moves(self):
 		moves = []
@@ -62,6 +62,15 @@ class EnemyRoom(MapTile):
 			the_Player.hp= the_Player.hp - self.Enemy.damage
 			print("Enemy does {} damage. You have {} Hit Point.".format(self.Enemy.damage, the_Player.hp))
 
+	def available_Actions(self):
+		moves = MapTile.available_Actions(self)
+                if self.Enemy.is_alive():
+                        moves.append(Actions.Attack(self.Enemy))
+                        # This next line should look up the last tile the player occupied.
+                        # Use the start tile as a placeholder for now
+                        moves.append(Actions.Flee(Tiles.StartingRoom))
+		return moves
+
 class EmptyCastleRoom(MapTile):
 	"""Empty room"""
 	def intro_text(self):
@@ -86,11 +95,8 @@ class StupidAnimalRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemy.StupidAnimal()))
-		# This next line should look up the last tile the player occupied.
-		# Use the start tile as a placeholder for now
-		moves.append(Actions.Flee(Tiles.StartingRoom))
 		return moves
+	
 class SpookySkeletonRoom(EnemyRoom):
 	"""Did you know dragons are better than undead?"""
 	def __init__(self, x, y):
@@ -106,11 +112,8 @@ class SpookySkeletonRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemy.SpookySkeleton))
-		# This next line should look up the last tile the player occupied.
-		# Use the start tile as a placeholder for now
-		moves.append(Actions.Flee(Tiles.StartingRoom))
 		return moves
+
 class MoistSlimeRoom(EnemyRoom):
 	"""Wet and Nasty"""
 	def __init__(self, x, y):
@@ -127,12 +130,7 @@ class MoistSlimeRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemy.MoistSlime))
-		# This next line should look up the last tile the player occupied.
-		# Use the start tile as a placeholder for now
-		moves.append(Actions.Flee(Tiles.StartingRoom))
 		return moves
-
 
 # item rooms
 
