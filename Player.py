@@ -30,10 +30,10 @@ class Player:
                         print("You bump into an invisible wall.")
 
 	def move_north(self):
-		self.move(dx=0, dy=-1)
+		self.move(dx=0, dy=1)
 
 	def move_south(self):
-		self.move(dx=0, dy=1)
+		self.move(dx=0, dy=-1)
 
 	def move_east(self):
 		self.move(dx=1, dy=0)

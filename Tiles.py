@@ -98,17 +98,18 @@ class StupidAnimalRoom(EnemyRoom):
 		return moves
 	
 class SpookySkeletonRoom(EnemyRoom):
-	"""Did you know dragons are better than undead?"""
+	"""Wet and Nasty"""
 	def __init__(self, x, y):
 		super(SpookySkeletonRoom, self).__init__(x, y, Enemy.SpookySkeleton())
-	def intro_init(self):
+
+	def intro_text(self):
 		if self.Enemy.is_alive():
 			return"""
-			You are startled by the apperance of a Spooky Skeleton
+			You are startled by the Appearance of a Spooky Skeleton...or is it Henry?
 			"""
 		else:
 			return"""
-			The skeleton lies in peices it is far less spooky now
+			The Skeleton lies in a spooky pile of bones of the spooky floor spoooookkkyy
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
@@ -127,6 +128,40 @@ class MoistSlimeRoom(EnemyRoom):
 		else:
 			return"""
 			The Moist Slime's Moist corpse is on the ground Moistly... Moist
+			"""
+	def available_Actions(self):
+                moves = EnemyRoom.available_Actions(self)
+		return moves
+class CEOJoblinRoom(EnemyRoom):
+	"""Wet and Nasty"""
+	def __init__(self, x, y):
+		super(CEOJoblinRoom, self).__init__(x, y, Enemy.CEOJoblin())
+
+	def intro_text(self):
+		if self.Enemy.is_alive():
+			return"""
+			YOU'RE FIRED! CEO Joblin appears!
+			"""
+		else:
+			return"""
+			Bussiness is done
+			"""
+	def available_Actions(self):
+                moves = EnemyRoom.available_Actions(self)
+		return moves
+class SimianAngleRoom(EnemyRoom):
+	"""Wet and Nasty"""
+	def __init__(self, x, y):
+		super(SimianAngleRoom, self).__init__(x, y, Enemy.SimianAngle())
+
+	def intro_text(self):
+		if self.Enemy.is_alive():
+			return"""
+			An angry Gorilla brandishing a protractor approaches you. BY GOD ITS SIMIAN ANGLE!
+			"""
+		else:
+			return"""
+			Simian Angle lies on the ground, goodnight Sweet Prince
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)

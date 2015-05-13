@@ -22,3 +22,9 @@ class StupidAnimal(Enemy):
 class MoistSlime(Enemy):
 	def __init__(self):
 		super(MoistSlime, self).__init__(name="Moist Slime", hp=10, damage=1)
+class CEOJoblin(Enemy):
+	def __init__(self):
+		super(CEOJoblin, self).__init__(name="CEO Joblin", hp=69, damage=8)
+class SimianAngle(Enemy):
+	def __init__(self):
+		super(SimianAngle, self).__init__(name="Simian Angle", hp=42, damage=6)
