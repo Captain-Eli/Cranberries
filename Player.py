@@ -22,9 +22,12 @@ class Player:
 			print(Item)
 			
 	def move(self, dx, dy):
-		self.location_x += dx
-		self.location_y += dy
-		print(World.tile_exists(self.location_x, self.location_y).intro_text())
+		if World.tile_exists(self.location_x + dx, self.location_y + dy):
+                        self.location_x += dx
+                        self.location_y += dy
+                        print(World.tile_exists(self.location_x, self.location_y).intro_text())
+                else:
+                        print("You bump into an invisible wall.")
 
 	def move_north(self):
 		self.move(dx=0, dy=-1)
