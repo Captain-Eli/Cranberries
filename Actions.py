@@ -1,8 +1,9 @@
 # Cranberries
 # Senior Project for Eli and Henry
 from Player import Player
+import Enemy
+from Enemy import StupidAnimal
 
-from Enemies import Enemy
 class Action(object):
 	def __init__(self, method, name, hotkey, **kwargs):
 		self.method = method
@@ -12,6 +13,7 @@ class Action(object):
 
 	def __str__(self):
 		return "{}: {}".format(self.hotkey, self.name)
+	
 #movment hotkeys 
 class MoveNorth(Action):
 	def __init__(self):

@@ -1,4 +1,5 @@
-import Items, Enemies, Actions, World, Player, Tiles
+import Items, Enemy, Actions, World, Player, Tiles
+from Enemy import StupidAnimal
 
 class MapTile(object):
 	def __init__(self, x, y):
@@ -72,7 +73,7 @@ class EmptyCastleRoom(MapTile):
 class StupidAnimalRoom(EnemyRoom):
 	"""Stupid humans live here"""
 	def __init__(self, x, y):
-		super(StupidAnimalRoom, self).__init__(x, y, Enemies.StupidAnimal())
+		super(StupidAnimalRoom, self).__init__(x, y, Enemy.StupidAnimal())
 
 	def intro_text(self):
 		if self.Enemy.is_alive():
@@ -85,7 +86,7 @@ class StupidAnimalRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemies.MoistSlime))
+		moves.append(Actions.Attack(Enemy.StupidAnimal))
 		# This next line should look up the last tile the player occupied.
 		# Use the start tile as a placeholder for now
 		moves.append(Actions.Flee(Tiles.StartingRoom))
@@ -93,7 +94,7 @@ class StupidAnimalRoom(EnemyRoom):
 class SpookySkeletonRoom(EnemyRoom):
 	"""Did you know dragons are better than undead?"""
 	def __init__(self, x, y):
-		super(SpookySkeletonRoom, self).__init__(x, y, Enemies.SpookySkeleton())
+		super(SpookySkeletonRoom, self).__init__(x, y, Enemy.SpookySkeleton())
 	def intro_init(self):
 		if self.Enemy.is_alive():
 			return"""
@@ -105,7 +106,7 @@ class SpookySkeletonRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemies.MoistSlime))
+		moves.append(Actions.Attack(Enemy.SpookySkeleton))
 		# This next line should look up the last tile the player occupied.
 		# Use the start tile as a placeholder for now
 		moves.append(Actions.Flee(Tiles.StartingRoom))
@@ -113,7 +114,7 @@ class SpookySkeletonRoom(EnemyRoom):
 class MoistSlimeRoom(EnemyRoom):
 	"""Wet and Nasty"""
 	def __init__(self, x, y):
-		super(MoistSlimeRoom, self).__init__(x, y, Enemies.MoistSlime())
+		super(MoistSlimeRoom, self).__init__(x, y, Enemy.MoistSlime())
 
 	def intro_text(self):
 		if self.Enemy.is_alive():
@@ -126,7 +127,7 @@ class MoistSlimeRoom(EnemyRoom):
 			"""
 	def available_Actions(self):
                 moves = EnemyRoom.available_Actions(self)
-		moves.append(Actions.Attack(Enemies.MoistSlime))
+		moves.append(Actions.Attack(Enemy.MoistSlime))
 		# This next line should look up the last tile the player occupied.
 		# Use the start tile as a placeholder for now
 		moves.append(Actions.Flee(Tiles.StartingRoom))

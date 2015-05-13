@@ -1,5 +1,6 @@
 import random
-import Items, World, Enemies
+import Items, World
+import Enemy
 
 class Player:
 	inventory = [Items.Rock()]
@@ -38,21 +39,22 @@ class Player:
 		self.move(dx=-1, dy=0)
 
 #attack command
-	def attack(self, Enemy):
+	def attack(self, enemy):
 		best_weapon = None
 		max_dmg = 0
+		print enemy
 		for Item in self.inventory:
 			if isinstance(Item, Items.Weapon):
 				if Item.damage > max_dmg:
 						max_dmg = Item.damage
 						best_weapon = Item
 
-		print("You use {} against {}!", format(best_weapon.name, Enemy.name))
-		Enemy.hp -= best_weapon.damage
-		if not Enemy.is_alive():
-			print("{} has been slain!", format(Enemy.name))
+		print("You use {} against {}!", format(best_weapon.name, enemy.name))
+		enemy.hp -= best_weapon.damage
+		if not enemy.is_alive():
+			print("{} has been slain!", format(enemy.name))
 		else:
-			print("{} HP is {}.", format(Enemy.name, Enemy.hp))
+			print("{} HP is {}.", format(enemy.name, enemy.hp))
 
 	def flee(self, tile):		
 		available_moves = tile.adjacent_move()
